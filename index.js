@@ -11,7 +11,7 @@ const server = http.createServer(app);
 
 dotenv.config({path:'.env'})
 
-cron.schedule("*/300 * * * * *", function() {
+cron.schedule("*/5 * * * *", function() {
     const currentDate = new Date();
      console.log(currentDate);
     sendData()
