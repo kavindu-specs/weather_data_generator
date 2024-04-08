@@ -4,17 +4,21 @@ const cron = require("node-cron");
 const dotenv = require("dotenv")
 
 const dataConfig = require("./config/data")
+const {sendData} = require("./helpers/helperFunctions")
 
 const app = express();
 const server = http.createServer(app);
 
 dotenv.config({path:'.env'})
 
-cron.schedule("*/20 * * * * *", function() { dehd
+cron.schedule("*/5 * * * *", function() {
+    const currentDate = new Date();
+     console.log(currentDate);
+    sendData()
     console.log("running a task every 10 second"); 
 }); 
   
 
-const port = process.env.PORT || 6000
+const port = process.env.PORT 
 
-server.listen(port, () => console.log(`Example app is listening on port ${port}`));
+server.listen(port, () => console.log(`Weather Data generator is listening on port ${port}`));
